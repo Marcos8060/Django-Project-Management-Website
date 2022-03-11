@@ -20,4 +20,28 @@ body{
 .hero_section{
     background-image: url('../images/hero.jpg');
     height: 87vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    z-index: 1;
+    font-family: Nunito;
+}
+.hero_section::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+    z-index: -1;
+}
+.content > h1{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    padding-top: 30vh;
+    color: white;
 }
