@@ -65,9 +65,31 @@ body{
 
 /* profile */
 .profile-img{
-    height: 90px;
+    height: 150px;
     width: 100%;
     object-fit: cover;
+    border-radius: 5px;
+}
+.profile-photo{
+    width: 150px;
+    height: 150px;
+    border-radius: 999px;
+    object-fit: cover;
+    margin-top: -50px;
+    margin-left: 40px;
+}
+.personal_projects{
+    background: #FCFCFC;
+    padding: 10px;
+}
+.profile_btn{
+    background: #202121;
+    border: none;
+    height: 40px;
+    color: #E4B96C;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-left: 20px;
 }
 /* footer */
 footer{

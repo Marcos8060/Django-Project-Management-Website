@@ -14,16 +14,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul class="navbar-nav ms-auto">
-             <h4 class="mt-3">Welcome, Marcos</h4>
+                <h4 class="mt-3">Welcome, Marcos</h4>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                     <img class="img-fluid navbar-img" src="../static/images/resume.png" alt=""> 
+                        <img class="img-fluid navbar-img" src="../static/images/resume.png" alt="">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li><a class="dropdown-item" href="#">View Profile</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i><span class="m-2">Logout</span></a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i><span
+                                    class="m-2">Logout</span></a></li>
                     </ul>
                 </li>
             </ul>
@@ -34,6 +35,43 @@
     <div class="profile_section mt-3">
         <img class="img-fluid profile-img" src="../static/images/hero.jpg" alt="">
     </div>
-    <img class="img-fluid" src="../static/images/resume.png" alt="">
+    <img class="img-fluid profile-photo" src="../static/images/resume.png" alt="">
+    <button class="profile_btn">Update Profile</button>
+    <h3 class="mt-5">My Projects</h3>
+    <div class="row">
+        <div class="col-md-6 personal_projects">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <img class="img-fluid" src="../static/images/p2.jpg" alt="">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <img class="img-fluid" src="../static/images/p2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>Personal Details</h4>
+            <h6>Name : Marcos Ochieng</h6>
+            <h6>Location : Nairobi</h6>
+            <h6>Bio : <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse ducimus cupiditate ad atque quis
+                    nemo quod doloremque obcaecati. Laudantium, ut?</p>
+            </h6>
+        </div>
+    </div>
 </div>
+<footer class="mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h1 class="pt-3">ProHub</h1>
+            </div>
+            <div class="col-md-4">
+                <p class="pt-4">@CopyRight AllRights Reserved</p>
+            </div>
+            <div class="col-md-4">
+                <h1 class="pt-3">2022</h1>
+            </div>
+        </div>
+    </div>
+</footer>
 {% endblock %}
