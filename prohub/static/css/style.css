@@ -62,7 +62,13 @@ body{
     border-radius: 999px;
     object-fit: cover;
 }
-
+.project_img:hover{
+    background: black;
+}
+.underline{
+    border-bottom: 2px solid black;
+    width: 130px;
+}
 /* profile */
 .profile-img{
     height: 150px;
