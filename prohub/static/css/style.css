@@ -46,3 +46,21 @@ body{
     padding-top: 30vh;
     color: white;
 }
+/* project section */
+.card{
+    box-shadow: none;
+}
+.card-body{
+    background: #FCFCFC;
+}
+.project-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+/* footer */
+footer{
+    background: #202121;
+    color: #E4B96C;
+}
