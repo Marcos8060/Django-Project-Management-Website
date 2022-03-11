@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Nunito:wght@200&display=swap');
+
+body{
+    font-family: 'Nunito', sans-serif;
+}
+.navbar{
+    background: #F4F7F6;
+}
+.navbar-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+.navbar-brand{
+    color: #202121;
+    font-weight: bolder;
+}
+/* hero section */
+.hero_section{
+    background-image: url('../images/hero.jpg');
+    height: 87vh;
+}
