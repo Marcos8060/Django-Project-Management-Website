@@ -6,7 +6,12 @@ def home_page(request):
 
 
 def register(request):
+    if request.method == 'POST':
+        
     return render(request,'register.html')
+
+def login(request):
+    return render(request,'login.html')
 
 
 def profile(request):

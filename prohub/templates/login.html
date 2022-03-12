@@ -14,15 +14,11 @@
         <div class="register_container">
             <form action="">
                 {% csrf_token %}
-                <label for="first name" class="form-label">Full Name:</label>
-                <input type="text" class="form-control" placeholder="full name...">
                 <label for="last name" class="form-label">Username:</label>
                 <input type="text" class="form-control" placeholder="username...">
-                <label for="first name" class="form-label">Email:</label>
-                <input type="email" class="form-control" placeholder="email...">
                 <label for="password" class="form-label">Password:</label>
                 <input type="password" class="form-control" placeholder="password..."><br>
-                <a class="mt-2 mb-2" href="#">Already have an account? Login</a><br><br>
+                <a class="mt-2 mb-2" href="{% url 'register' %}">Don't have an account? SignUp</a><br><br>
                 <button class="btn1" type="submit">Submit</button>
             </form>
         </div>
