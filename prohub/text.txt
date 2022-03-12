@@ -1,0 +1,14 @@
+<div class="col-md-4 mb-4">
+            <div class="card">
+                <a href="#"><img src="../static/images/p2.jpg" class="card-img-top project_img" alt="..."></a>
+                <div class="card-body">
+                  <a href="#" class="text-decoration-none text-dark"><h5 class="card-title" style="font-weight: bolder;">House help</h5></a>
+                  <div class="d-flex align-items-center justify-content-between">
+                    <p>From Italy</p>
+                    <p>March 9th, 2022</p>
+                  </div>
+                  <img class="img-fluid project-img" src="../static/images/resume.png" alt="">
+                  <span>By  Marcos Ochieng</span>
+                </div>
+              </div>
+        </div>
