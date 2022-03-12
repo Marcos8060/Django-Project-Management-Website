@@ -50,12 +50,6 @@ body{
     color: white;
 }
 /* project section */
-.card{
-    box-shadow: none;
-}
-.card-body{
-    background: #FCFCFC;
-}
 .project-img{
     width: 35px;
     height: 35px;
@@ -97,7 +91,6 @@ body{
     border-radius: 4px;
     margin-left: 20px;
 }
-
 /* TRIAL */
 .img-area{
     text-align: center;
@@ -136,6 +129,29 @@ body{
 .img-info{
     background: #FCFCFC;
     padding: 10px;
+}
+/* REGISTER */
+.register_container{
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15vh;
+}
+.register_container > form > label{
+    font-weight: bold;
+}
+.register_container > form > .btn1{
+    width: 100%;
+    border: none;
+    background: #202121;
+    color: white;
+    height: 35px;
+}
+.register_container > form > input:focus{
+    box-shadow: none;
 }
 /* footer */
 footer{
