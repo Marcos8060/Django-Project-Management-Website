@@ -31,8 +31,7 @@
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li><a class="dropdown-item" href="{% url 'profile' %}">View Profile</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i><span
-                                    class="m-2">Logout</span></a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i><span class="m-2">Logout</span></a></li>
                     </ul>
                 </li>
             </ul>
@@ -60,14 +59,14 @@
             <div class="img-area">
                 <img style="height: 200px;" class="img-fluid" src="{{ project.image.url }}" alt="">
                 <div class="img-text">
-                    <a class="text-decoration-none text-white" href="#">VOTE NOW</a>
+                    <a class="text-decoration-none text-white" href="{{ project.get_absolute_url }}">VOTE NOW</a>
                 </div>
             </div>
             <div class="img-info">
                 <h6 style="font-weight: bolder;">{{ project.title }}</h6>
                 <div class="d-flex align-items-center justify-content-between">
                     <small>From {{ project.location }}</small>
-                    <small>{{ project.pub_date }}</small>
+                    <small>{{ project.pub_date|timesince }} ago.</small>
                 </div>
                 <img class="img-fluid project-img mt-2" src="../static/images/resume.png" alt="">
                 <small class="mt-2">By {{ project.user }}</small>

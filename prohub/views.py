@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .models import Project,Profile
+from django.shortcuts import get_object_or_404
 
 
 
@@ -75,5 +76,11 @@ def profile(request):
 
         profile = Profile(profile_picture=profile_picture,name=name,bio=bio,location=location,user=request.user,project=request.user)
         profile.save()
-        return render(request,'profile.html',{'profile':profile})
+        projects = Project.objects.filter(project=profile.project)
+        return render(request,'profile.html',{'profile':profile,'projects':projects})
     return render(request,'profile.html')
+
+# details view
+def project_detail(request,id):
+    project = get_object_or_404(Project,id=id)
+    return render(request,'project-detail.html',{'project':project})

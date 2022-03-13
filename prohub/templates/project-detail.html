@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Details</title>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/">ProHub</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+            aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list navbar-toggler-icon"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                <li class="m-3">Hey, {{ user.username }}</li>
+                <img style="width: 40px; height: 40px;" class="img-fluid m-2" src="../static/images/wave.png" alt="">
+                <li style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal" class="m-3"><a class="text-decoration-none text-dark">Post Project</a></li>
+                <li class="m-3"><a class="text-decoration-none text-dark" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li class="m-3"><a class="text-decoration-none text-dark" href="{% url 'register' %}">SignUp</a></li>
+                <li class="m-3"><a class="text-decoration-none text-dark" href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="img-fluid navbar-img" src="../static/images/resume.png" alt="">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">View Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i><span class="m-2">Logout</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row" style="margin-top: 10vh;">
+        <div class="col-md-6">
+            <img class="img-fluid" src="{{ project.image.url }}" alt="">
+        </div>
+        <div class="col-md-6">
+            <h4>Description</h4>
+            <p>{{ project.description }}</p>
+            <div>
+                <small>By {{ project.user }}</small>
+                <small>{{ project.pub_date|timesince }}</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
