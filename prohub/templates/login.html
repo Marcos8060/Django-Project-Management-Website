@@ -12,12 +12,17 @@
 <body>
     <div class="container">
         <div class="register_container">
-            <form action="">
+            <div>
+                {% for message in messages %}
+                <h3 class="text-center mt-3" style="color: #F2658D;">{{ message }}</h3>
+                {% endfor %}
+            </div>
+            <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
-                <label for="last name" class="form-label">Username:</label>
-                <input type="text" class="form-control" placeholder="username...">
+                <label for="username" class="form-label">Username:</label>
+                <input name="username" type="text" class="form-control" placeholder="username...">
                 <label for="password" class="form-label">Password:</label>
-                <input type="password" class="form-control" placeholder="password..."><br>
+                <input name="password" type="password" class="form-control" placeholder="password..."><br>
                 <a class="mt-2 mb-2" href="{% url 'register' %}">Don't have an account? SignUp</a><br><br>
                 <button class="btn1" type="submit">Submit</button>
             </form>
