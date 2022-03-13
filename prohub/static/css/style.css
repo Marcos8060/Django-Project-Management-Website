@@ -150,6 +150,16 @@ body{
     color: white;
     height: 35px;
 }
+.btn1{
+    width: 100%;
+    border: none;
+    background: #202121;
+    color: white;
+    height: 35px;
+}
+input{
+    box-shadow: none;
+}
 .register_container > form > input:focus{
     box-shadow: none;
 }

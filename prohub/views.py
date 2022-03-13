@@ -4,12 +4,22 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from .models import Project
 
 
 
 # Create your views here.
 def home(request):
-    return render(request,'index.html')
+    if request.method == 'POST':
+        image = request.FILES.get('image')
+        title = request.POST['title']
+        description = request.POST['description']
+        location = request.POST['location']
+
+        new_project = Project(image=image,title=title,description=description,location=location)
+        new_project.save()
+    projects = Project.objects.all()
+    return render(request,'index.html',{'projects':projects})
 
 # signUp view
 def register(request):    

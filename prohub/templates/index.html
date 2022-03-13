@@ -55,57 +55,25 @@
 <div class="container">
     <h5 class="mt-4 mb-5 underline" style="font-weight: bold;">Top Projects</h5>
     <div class="row mb-5">
+        {% for project in projects %}
         <div class="col-md-4">
             <div class="img-area">
-                <img class="img-fluid" src="../static/images/p2.jpg" alt="">
+                <img style="height: 200px;" class="img-fluid" src="{{ project.image.url }}" alt="">
                 <div class="img-text">
                     <a class="text-decoration-none text-white" href="#">VOTE NOW</a>
                 </div>
             </div>
             <div class="img-info">
-                <h6 style="font-weight: bolder;">Marioni</h6>
+                <h6 style="font-weight: bolder;">{{ project.title }}</h6>
                 <div class="d-flex align-items-center justify-content-between">
-                    <small>From Kenya</small>
-                    <small>March 13 2022</small>
+                    <small>From {{ project.location }}</small>
+                    <small>{{ project.pub_date }}</small>
                 </div>
                 <img class="img-fluid project-img mt-2" src="../static/images/resume.png" alt="">
                 <small class="mt-2">By Marcos Ochieng</small>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="img-area">
-                <img class="img-fluid" src="../static/images/p2.jpg" alt="">
-                <div class="img-text">
-                    <a class="text-decoration-none text-white" href="#">VOTE NOW</a>
-                </div>
-            </div>
-            <div class="img-info">
-                <h6 style="font-weight: bolder;">Marioni</h6>
-                <div class="d-flex align-items-center justify-content-between">
-                    <small>From Kenya</small>
-                    <small>March 13 2022</small>
-                </div>
-                <img class="img-fluid project-img mt-2" src="../static/images/resume.png" alt="">
-                <small class="mt-2">By Marcos Ochieng</small>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="img-area">
-                <img class="img-fluid" src="../static/images/p2.jpg" alt="">
-                <div class="img-text">
-                    <a class="text-decoration-none text-white" href="#">VOTE NOW</a>
-                </div>
-            </div>
-            <div class="img-info">
-                <h6 style="font-weight: bolder;">Marioni</h6>
-                <div class="d-flex align-items-center justify-content-between">
-                    <small>From Kenya</small>
-                    <small>March 13 2022</small>
-                </div>
-                <img class="img-fluid project-img mt-2" src="../static/images/resume.png" alt="">
-                <small class="mt-2">By Marcos Ochieng</small>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 <footer>
@@ -132,14 +100,13 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{% url 'home' %}" method="POST" class="caption_form" enctype="multipart/form-data">
+            <form action="{% url 'home' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input name="image" class="mb-5" type="file" style="font-family: Nunito;">
-                <input class="name mb-3" name="name" type="text" placeholder="Provide a name...">
-                <div class="d-flex align-items-center">
-                    <input name="caption" style="border: none;" type="text" placeholder="Write a caption...">
-                    <button type="submit" class="comment_button">Share</button>
-                </div>
+                <input style="box-shadow: none;" name="image" class="mb-3 form-control" type="file">
+                <input style="box-shadow: none;" class="mb-3 form-control" name="title" type="text" placeholder="Provide a title...">
+                <textarea class="form-control mb-3" name="description" id="" cols="30" rows="5" placeholder="description"></textarea>
+                <input style="box-shadow: none;" class="form-control mb-3" name="location" type="text" placeholder="location...">
+                <button type="submit" class="btn1">Share</button>
             </form>
         </div>
       </div>
