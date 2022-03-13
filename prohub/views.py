@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .models import Project
+from .models import Project,Profile
 
 
 
@@ -16,7 +16,7 @@ def home(request):
         description = request.POST['description']
         location = request.POST['location']
 
-        new_project = Project(image=image,title=title,description=description,location=location)
+        new_project = Project(user=request.user,image=image,title=title,description=description,location=location)
         new_project.save()
     projects = Project.objects.all()
     return render(request,'index.html',{'projects':projects})
@@ -67,4 +67,13 @@ def logout_view(request):
 # profile view
 @login_required
 def profile(request):
+    if request.method == 'POST':
+        profile_picture = request.FILES.get('image')
+        name = request.POST['name']
+        bio = request.POST['bio']
+        location = request.POST['location']
+
+        profile = Profile(profile_picture=profile_picture,name=name,bio=bio,location=location,user=request.user,project=request.user)
+        profile.save()
+        return render(request,'profile.html',{'profile':profile})
     return render(request,'profile.html')

@@ -56,7 +56,7 @@
     <h5 class="mt-4 mb-5 underline" style="font-weight: bold;">Top Projects</h5>
     <div class="row mb-5">
         {% for project in projects %}
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3">
             <div class="img-area">
                 <img style="height: 200px;" class="img-fluid" src="{{ project.image.url }}" alt="">
                 <div class="img-text">
@@ -70,7 +70,7 @@
                     <small>{{ project.pub_date }}</small>
                 </div>
                 <img class="img-fluid project-img mt-2" src="../static/images/resume.png" alt="">
-                <small class="mt-2">By Marcos Ochieng</small>
+                <small class="mt-2">By {{ project.user }}</small>
             </div>
         </div>
         {% endfor %}

@@ -36,7 +36,7 @@
     <div class="profile_section mt-3">
         <img class="img-fluid profile-img" src="../static/images/hero.jpg" alt="">
     </div>
-    <img class="img-fluid profile-photo" src="../static/images/resume.png" alt="">
+    <img class="img-fluid profile-photo" src="{{ user.profile.profile_picture.url }}" alt="">
     <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="profile_btn">Update Profile</button>
     <h3 class="mt-5">My Projects</h3>
     <div class="row">
@@ -52,10 +52,9 @@
         </div>
         <div class="col-md-6">
             <h4>Personal Details</h4>
-            <h6>Name : Marcos Ochieng</h6>
-            <h6>Location : Nairobi</h6>
-            <h6>Bio : <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse ducimus cupiditate ad atque quis
-                    nemo quod doloremque obcaecati. Laudantium, ut?</p>
+            <h6>Name : {{ user.profile.name }}</h6>
+            <h6>Location : {{ user.profile.location }}</h6>
+            <h6>Bio : <p>{{ user.profile.bio }}</p>
             </h6>
         </div>
     </div>
@@ -85,7 +84,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{% url 'home' %}" method="POST" enctype="multipart/form-data">
+            <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input style="box-shadow: none;" name="image" class="mb-3 form-control" type="file">
                 <input style="box-shadow: none;" class="mb-3 form-control" name="name" type="text" placeholder="Provide a name...">
