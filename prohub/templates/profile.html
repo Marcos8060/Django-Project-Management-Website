@@ -19,7 +19,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
+                        {% if user.profile.profile_picture %}
+                        <img class="img-fluid navbar-img" src="{{ user.profile.profile_picture.url }}" alt="">
+                        {% else %}
                         <img class="img-fluid navbar-img" src="../static/images/resume.png" alt="">
+                        {% endif %}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li><a class="dropdown-item" href="#">View Profile</a></li>
@@ -36,7 +40,11 @@
     <div class="profile_section mt-3">
         <img class="img-fluid profile-img" src="../static/images/hero.jpg" alt="">
     </div>
+    {% if user.profile.profile_picture %}
     <img class="img-fluid profile-photo" src="{{ user.profile.profile_picture.url }}" alt="">
+    {% else %}
+    <img class="img-fluid profile-photo" src="../static/images/resume.png" alt="">
+    {% endif %}
     <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="profile_btn">Update Profile</button>
     <h3 class="mt-5">My Projects</h3>
     <div class="row">
@@ -59,7 +67,7 @@
         </div>
     </div>
 </div>
-<footer class="mt-4">
+<footer class="mt-4"> 
     <div class="container">
         <div class="row">
             <div class="col-md-4">

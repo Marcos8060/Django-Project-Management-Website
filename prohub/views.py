@@ -20,7 +20,8 @@ def home(request):
         new_project = Project(user=request.user,image=image,title=title,description=description,location=location)
         new_project.save()
     projects = Project.objects.all()
-    return render(request,'index.html',{'projects':projects})
+    profile = Profile.objects.all()
+    return render(request,'index.html',{'projects':projects,'profile':profile})
 
 # signUp view
 def register(request):    
@@ -81,6 +82,8 @@ def profile(request):
     return render(request,'profile.html')
 
 # details view
+@login_required
 def project_detail(request,id):
     project = get_object_or_404(Project,id=id)
-    return render(request,'project-detail.html',{'project':project})
+    profile = Profile.objects.all()
+    return render(request,'project-detail.html',{'project':project,'profile':profile})
