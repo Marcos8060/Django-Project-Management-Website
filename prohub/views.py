@@ -4,8 +4,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .models import Project,Profile
+from .models import Project,Profile,ReviewRating
 from django.shortcuts import get_object_or_404
+from .forms import ReviewForm
 
 
 
@@ -86,4 +87,29 @@ def profile(request):
 def project_detail(request,id):
     project = get_object_or_404(Project,id=id)
     profile = Profile.objects.all()
-    return render(request,'project-detail.html',{'project':project,'profile':profile})
+    reviews = ReviewRating.objects.filter(project_id=id)
+    return render(request,'project-detail.html',{'project':project,'profile':profile,'reviews':reviews})
+
+
+# Reviews function
+def submit_review(request,project_id):
+    if request.method == 'POST':
+        try:
+            reviews = ReviewRating.objects.get(user__id=request.user.id,project=project_id)
+            form = ReviewForm(request.POST,instance=reviews)
+            form.save()
+            messages.success(request,'Thank you your review has been updated')
+            return redirect('/')
+        except ReviewRating.DoesNotExist:
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                data = ReviewRating()
+                data.subject = form.cleaned_data['subject']
+                data.rating = form.cleaned_data['rating']
+                data.review = form.cleaned_data['review']
+                data.ip = request.META.get('REMOTE_ADDR')
+                data.project = project_id
+                data.user_id = request.user.id
+                data.save()
+                messages.success(request,'Thank you your review has been submitted')
+    return redirect('details',{'reviews':reviews})
