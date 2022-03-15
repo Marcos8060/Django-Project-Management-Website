@@ -29,7 +29,7 @@
                         {% if user.profile.profile_picture %}
                         <img class="img-fluid navbar-img" src="{{ user.profile.profile_picture.url }}" alt="">
                         {% else %} 
-                        <img class="img-fluid navbar-img" src="../static/images/resume.png" alt="">
+                        <img class="img-fluid navbar-img" src="../static/images/avatar.png" alt="">
                         {% endif %}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -76,7 +76,7 @@
                     <small>{{ project.pub_date|timesince }} ago.</small>
                 </div>
                 <img class="img-fluid project-img mt-2" src="../static/images/resume.png" alt="">
-                <small class="mt-2">By {{ project.user }}</small>
+                <small class="mt-2">By {{ project.owner }}</small>
             </div>
         </div>
         {% endfor %}

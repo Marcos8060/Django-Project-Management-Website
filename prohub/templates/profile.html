@@ -43,7 +43,7 @@
     {% if user.profile.profile_picture %}
     <img class="img-fluid profile-photo" src="{{ user.profile.profile_picture.url }}" alt="">
     {% else %}
-    <img class="img-fluid profile-photo" src="../static/images/resume.png" alt="">
+    <img class="img-fluid profile-photo" src="../static/images/avatar.png" alt="">
     {% endif %}
     <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="profile_btn">Update Profile</button>
     <h3 class="mt-5">My Projects</h3>
@@ -61,7 +61,6 @@
         <div class="col-md-6">
             <h4>Personal Details</h4>
             <h6>Name : {{ user.profile.name }}</h6>
-            <h6>Location : {{ user.profile.location }}</h6>
             <h6>Bio : <p>{{ user.profile.bio }}</p>
             </h6>
         </div>
@@ -97,7 +96,6 @@
                 <input style="box-shadow: none;" name="image" class="mb-3 form-control" type="file">
                 <input style="box-shadow: none;" class="mb-3 form-control" name="name" type="text" placeholder="Provide a name...">
                 <textarea class="form-control mb-3" name="bio" id="" cols="30" rows="5" placeholder="bio..."></textarea>
-                <input style="box-shadow: none;" class="form-control mb-3" name="location" type="text" placeholder="location...">
                 <button type="submit" class="btn1">Share</button>
             </form>
         </div>

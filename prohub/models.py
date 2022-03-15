@@ -21,7 +21,6 @@ class Project(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    project = models.ForeignKey(Project,on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to='profile')
     name = models.CharField(max_length=50)
     bio = models.CharField(max_length=200)

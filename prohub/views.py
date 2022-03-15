@@ -75,12 +75,10 @@ def profile(request):
         profile_picture = request.FILES.get('image')
         name = request.POST['name']
         bio = request.POST['bio']
-        location = request.POST['location']
 
-        profile = Profile(profile_picture=profile_picture,name=name,bio=bio,location=location,user=request.user,project=request.user)
+        profile = Profile(profile_picture=profile_picture,name=name,bio=bio,user=request.user)
         profile.save()
-        projects = Project.objects.filter(project=profile.project)
-        return render(request,'profile.html',{'profile':profile,'projects':projects})
+        return render(request,'profile.html',{'profile':profile})
     return render(request,'profile.html')
 
 # details view
@@ -96,7 +94,7 @@ def project_detail(request,id):
 def submit_review(request,project_id):
     if request.method == 'POST':
         try:
-            reviews = ReviewRating.objects.get(user__id=request.user.id,project=project_id)
+            reviews = ReviewRating.objects.get(user=request.user,project=project_id)
             form = ReviewForm(request.POST,instance=reviews)
             form.save()
             messages.success(request,'Thank you your review has been updated')
