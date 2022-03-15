@@ -10,6 +10,7 @@ from .forms import ReviewForm
 
 
 
+
 # Create your views here.
 def home(request):
     if request.method == 'POST':
@@ -113,3 +114,8 @@ def submit_review(request,project_id):
                 data.save()
                 messages.success(request,'Thank you your review has been submitted')
     return redirect('details',{'reviews':reviews})
+
+
+# API SECTION
+
+
