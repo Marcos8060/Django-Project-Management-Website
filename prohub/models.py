@@ -5,7 +5,7 @@ from django.urls import reverse
 
 # Create your models here.
 class Project(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    owner = models.ForeignKey(User,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='projects')
     title = models.CharField(max_length=50)
     description = models.TextField()
