@@ -1,6 +1,6 @@
 from api.permissions import IsOwnerOrReadOnly
-from prohub.models import Project
-from api.serializers import ProjectSerilizer,UserSerializer
+from prohub.models import Project,ReviewRating,Profile
+from api.serializers import ProjectSerilizer,UserSerializer,ReviewSerializer,ProfileSerializer
 from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework import permissions
@@ -31,3 +31,13 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+class ReviewRatingView(generics.ListAPIView):
+    queryset = ReviewRating.objects.all()
+    serializer_class = ReviewSerializer
+
+
+class ProfileView(generics.RetrieveAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer

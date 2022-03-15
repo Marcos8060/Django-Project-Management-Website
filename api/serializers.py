@@ -16,3 +16,16 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id','username','projects']
 
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReviewRating
+        fields = ['subject','review','rating','ip','status','created_at','updated_at']
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['project','profile_picture','name','bio']
+
+
