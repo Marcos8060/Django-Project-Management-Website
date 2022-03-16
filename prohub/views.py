@@ -71,6 +71,10 @@ def logout_view(request):
 # profile view
 @login_required
 def profile(request):
+    user = request.user.id
+    project = Project.objects.filter(owner_id=user)
+    print('###')
+    print(project)
     if request.method == 'POST':
         profile_picture = request.FILES.get('image')
         name = request.POST['name']
@@ -78,8 +82,8 @@ def profile(request):
 
         profile = Profile(profile_picture=profile_picture,name=name,bio=bio,user=request.user)
         profile.save()
-        return render(request,'profile.html',{'profile':profile})
-    return render(request,'profile.html')
+        return render(request,'profile.html',{'profile':profile,'project':project})
+    return render(request,'profile.html',{'project':project})
 
 # details view
 @login_required
@@ -92,26 +96,25 @@ def project_detail(request,id):
 
 # Reviews function
 def submit_review(request,project_id):
+    users = request.user
     if request.method == 'POST':
-        try:
-            reviews = ReviewRating.objects.get(user=request.user,project=project_id)
-            form = ReviewForm(request.POST,instance=reviews)
-            form.save()
-            messages.success(request,'Thank you your review has been updated')
-            return redirect('/')
-        except ReviewRating.DoesNotExist:
-            form = ReviewForm(request.POST)
-            if form.is_valid():
-                data = ReviewRating()
-                data.subject = form.cleaned_data['subject']
-                data.rating = form.cleaned_data['rating']
-                data.review = form.cleaned_data['review']
-                data.ip = request.META.get('REMOTE_ADDR')
-                data.project = project_id
-                data.user_id = request.user.id
-                data.save()
-                messages.success(request,'Thank you your review has been submitted')
-    return redirect('details',{'reviews':reviews})
+        subject = request.POST['subject']
+        review = request.POST['review']
+        rating = request.POST['rating']
+
+        user = request.user.id
+        get_reviews = ReviewRating.objects.filter(project_id=project_id,user_id=user).exists()
+        if get_reviews:
+            get_reviews = ReviewRating.objects.get(project_id=project_id,user_id=user)
+            get_reviews.rating = rating
+            get_reviews.subject = subject
+            get_reviews.review = review
+            get_reviews.save()
+        else:
+            project = Project.objects.get(id=project_id)
+            reviews = ReviewRating(project=project,user=users,subject=subject,review=review,rating=rating)
+            reviews.save()
+    return redirect('/')
 
 
 # API SECTION

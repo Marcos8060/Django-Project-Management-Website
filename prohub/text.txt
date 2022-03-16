@@ -1,0 +1,36 @@
+try:
+            reviews = ReviewRating.objects.get(user=request.user,project=project_id)
+            form = ReviewForm(request.POST)
+            form.save()
+            messages.success(request,'Thank you your review has been updated')
+            return redirect('/')
+        except ReviewRating.DoesNotExist:
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                data = ReviewRating()
+                data.subject = form.cleaned_data['subject']
+                data.rating = form.cleaned_data['rating']
+                data.review = form.cleaned_data['review']
+                data.ip = request.META.get('REMOTE_ADDR')
+                data.project = project_id
+                data.user_id = request.user.id
+                data.save()
+                messages.success(request,'Thank you your review has been submitted')
+    reviews = ReviewRating.objects.get(user=request.user,project=project_id,subject=data.subject,review=data.review,ip=data.ip)
+
+
+
+
+    path('submit_review/<int:project_id>/',views.submit_review,name='submit_review'),
+
+
+
+    def submit_review(request,project_id):
+    if request.method == 'POST':
+        subject = request.POST['subject']
+        review = request.POST['review']
+        rating = request.POST['rating']
+
+        reviews = ReviewRating(subject=subject,review=review,rating=rating,project=project_id,user=request.user)
+        reviews.save()
+        return redirect('details',{'reviews':reviews})

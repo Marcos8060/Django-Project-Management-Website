@@ -50,12 +50,11 @@
     <div class="row">
         <div class="col-md-6 personal_projects">
             <div class="row">
+                {% for project in project %}
                 <div class="col-md-6 mb-3">
-                    <img class="img-fluid" src="../static/images/p2.jpg" alt="">
+                    <img class="img-fluid" src="{{ project.image.url }}" alt="">
                 </div>
-                <div class="col-md-6 mb-3">
-                    <img class="img-fluid" src="../static/images/p2.jpg" alt="">
-                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="col-md-6">

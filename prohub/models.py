@@ -9,7 +9,7 @@ class Project(models.Model):
     image = models.ImageField(upload_to='projects')
     title = models.CharField(max_length=50)
     description = models.TextField()
-    pub_date = models.DateTimeField(auto_now_add=True)
+    pub_date = models.DateField(auto_now_add=True)
     location = models.CharField(max_length=50)
 
     def __str__(self):
