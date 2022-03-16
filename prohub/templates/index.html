@@ -75,11 +75,7 @@
                     <small>From {{ project.location }}</small>
                     <small>{{ project.pub_date }}.</small>
                 </div>
-                {% if user.profile.profile_picture %}
-                <img class="img-fluid project-img mt-2" src="{{ user.profile.profile_picture.url }}" alt="">
-                {% else %}
-                <img class="img-fluid project-img mt-2" src="../static/images/avatar.png" alt="">
-                {% endif %}
+                <img class="img-fluid project-img mt-2" src="../static/images/resume.png" alt="">
                 <small class="mt-2">By {{ project.owner }}</small>
             </div>
         </div>
