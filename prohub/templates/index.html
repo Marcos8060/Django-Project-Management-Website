@@ -73,9 +73,13 @@
                 <h6 style="font-weight: bolder;">{{ project.title }}</h6>
                 <div class="d-flex align-items-center justify-content-between">
                     <small>From {{ project.location }}</small>
-                    <small>{{ project.pub_date|timesince }} ago.</small>
+                    <small>{{ project.pub_date }}.</small>
                 </div>
-                <img class="img-fluid project-img mt-2" src="../static/images/resume.png" alt="">
+                {% if user.profile.profile_picture %}
+                <img class="img-fluid project-img mt-2" src="{{ user.profile.profile_picture.url }}" alt="">
+                {% else %}
+                <img class="img-fluid project-img mt-2" src="../static/images/avatar.png" alt="">
+                {% endif %}
                 <small class="mt-2">By {{ project.owner }}</small>
             </div>
         </div>
