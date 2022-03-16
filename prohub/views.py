@@ -19,7 +19,7 @@ def home(request):
         description = request.POST['description']
         location = request.POST['location']
 
-        new_project = Project(user=request.user,image=image,title=title,description=description,location=location)
+        new_project = Project(owner=request.user,image=image,title=title,description=description,location=location)
         new_project.save()
     projects = Project.objects.all()
     profile = Profile.objects.all()
