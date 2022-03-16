@@ -4,7 +4,7 @@
 
 ## Description
 
- A website that allows users to post projects and get reviews and ratings on their projects
+ A website that allows users to post projects and get reviews and ratings on their projects.
 ## Setup and Installation Requirements
 
 * Python version 3.8
